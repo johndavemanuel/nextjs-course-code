@@ -1,12 +1,12 @@
-import { useEffect, useState } from 'react';
-import useSWR from 'swr';
+import { useEffect, useState } from "react";
+import useSWR from "swr";
 
 function LastSalesPage(props) {
   const [sales, setSales] = useState(props.sales);
   // const [isLoading, setIsLoading] = useState(false);
 
   const { data, error } = useSWR(
-    'https://nextjs-course-c81cc-default-rtdb.firebaseio.com/sales.json'
+    "https://udemy-nextjs-6342a-default-rtdb.firebaseio.com/sales.json"
   );
 
   useEffect(() => {
@@ -27,7 +27,7 @@ function LastSalesPage(props) {
 
   // useEffect(() => {
   //   setIsLoading(true);
-  //   fetch('https://nextjs-course-c81cc-default-rtdb.firebaseio.com/sales.json')
+  //   fetch('https://udemy-nextjs-6342a-default-rtdb.firebaseio.com/sales.json')
   //     .then((response) => response.json())
   //     .then((data) => {
   //       const transformedSales = [];
@@ -66,7 +66,7 @@ function LastSalesPage(props) {
 
 export async function getStaticProps() {
   const response = await fetch(
-    'https://nextjs-course-c81cc-default-rtdb.firebaseio.com/sales.json'
+    "https://udemy-nextjs-6342a-default-rtdb.firebaseio.com/sales.json"
   );
   const data = await response.json();
 
