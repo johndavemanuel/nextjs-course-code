@@ -1,8 +1,12 @@
-import { MongoClient } from 'mongodb';
+import { MongoClient } from "mongodb";
 
 export async function connectDatabase() {
   const client = await MongoClient.connect(
-    'mongodb+srv://maximilian:8ZO3ycZqJ23kWBQx@cluster0.ntrwp.mongodb.net/events?retryWrites=true&w=majority'
+    "mongodb+srv://dave:xnKgJLRtv7YKOO66@cluster0.z4uxy.mongodb.net/udemy-next-js?retryWrites=true&w=majority",
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    }
   );
 
   return client;
@@ -16,12 +20,12 @@ export async function insertDocument(client, collection, document) {
   return result;
 }
 
-export async function getAllDocuments(client, collection, sort) {
+export async function getAllDocuments(client, collection, sort, filter = {}) {
   const db = client.db();
 
   const documents = await db
     .collection(collection)
-    .find()
+    .find(filter)
     .sort(sort)
     .toArray();
 
